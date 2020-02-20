@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -9,7 +9,6 @@ use App\Models\SocialUser;
 use App\Models\Rate;
 use App\Models\Lyric;
 use App\Models\FavouriteList;
-use App\Models\Comment;
 
 class User extends Authenticatable
 {
