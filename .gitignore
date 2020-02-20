@@ -5,6 +5,7 @@
 /vendor
 /resources/template_web/video
 /resources/template_web/media
+/public/web
 .env
 .env.backup
 .phpunit.result.cache
