@@ -14,7 +14,8 @@
         <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
                 <li class="active"><a href="index.html"><i class="lnr lnr-home"></i><span>Home</span></a></li>
-                <li><a href="radio.html"><i class="lnr lnr-users"></i> <span>Artists</span></a></li> 
+                <li><a href="radio.html"><i class="lnr lnr-users"></i> <span>Artists</span></a></li>
+                <li><a href="browse.html"><i class="lnr lnr-music-note"></i> <span>Albums</span></a></li>
                 {{-- <li class="menu-list"><a href="browse.html"><i class="lnr lnr-indent-increase"></i> <span>Browser</span></a>  
                     <ul class="sub-menu-list">
                         <li><a href="browse.html">Artists</a> </li>
@@ -39,7 +40,7 @@
 </div>
       <!-- /w3layouts-agile -->
 <!-- /w3l-agile -->
-<!-- signup -->
+{{-- <!-- signup -->
     <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content modal-info">
@@ -76,5 +77,5 @@
             </div>
         </div>
     </div>
-    <!-- //signup -->
+    <!-- //signup --> --}}
 <!-- /w3l-agile -->

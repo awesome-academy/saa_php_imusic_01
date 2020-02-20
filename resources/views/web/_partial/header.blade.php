@@ -5,7 +5,7 @@
     <!--toggle button end-->
     <!--notification menu start -->
         <div class="menu-right">
-            <div class="profile_details">		
+            <div class="profile_details" style="height: 64px;">		
                   <div class="col-md-4 serch-part">
                         <div id="sb-search" class="sb-search">
                             <form action="#" method="post">
@@ -17,48 +17,13 @@
                         </div>
                     </div>
                       <!-- search-scripts -->
-                            <script src="{{url('web/js/classie.js')}}"></script>
-                            <script src="{{url('web/js/uisearch.js')}}"></script>
+                            
                                 <script>
                                     new UISearch( document.getElementById( 'sb-search' ) );
                                 </script>
                             <!-- //search-scripts -->
                                      <!---->
-                                      <div class="col-md-4 player">
-                                            <div class="audio-player">
-                                                <audio id="audio-player"  controls="controls">
-                                                    <source src="web/media/Blue Browne.ogg" type="audio/ogg"></source>
-                                                    <source src="web/media/Blue Browne.mp3" type="audio/mpeg"></source>
-                                                    <source src="web/media/Georgia.ogg" type="audio/ogg"></source>
-                                                    <source src="web/media/Georgia.mp3" type="audio/mpeg"></source>
-                                                </audio>
-                                            </div>
-                                        <!---->
-                                        <script type="text/javascript">
-                                            $(function(){
-                                              $('#audio-player').mediaelementplayer({
-                                                alwaysShowControls: true,
-                                                features: ['playpause','progress','volume'],
-                                                audioVolume: 'horizontal',
-                                                iPadUseNativeControls: true,
-                                                iPhoneUseNativeControls: true,
-                                                AndroidUseNativeControls: true
-                                            });
-                                         });
-                                        </script>
-                                        <!--audio-->
-                                            <link rel="stylesheet" type="text/css" media="all" href="web/css/audio.css">
-                                            <script type="text/javascript" src="{{('web/js/mediaelement-and-player.min.js')}}"></script>
-                                            <!---->
-
-
-                                        <!--//-->
-                                        <ul class="next-top">
-                                            <li><a class="ar" href="#"> <img src="web/images/arrow.png" alt=""/></a></li>
-                                            <li><a class="ar2" href="#"><img src="web/images/arrow2.png" alt=""/></i></a></li>
-                                                
-                                        </ul>	
-                                        </div>
+                                      
                                     <div class="col-md-4 login-pop">
                                         <div id="loginpop"> <a href="#" id="loginButton"><span>Login <i class="arrow glyphicon glyphicon-chevron-right"></i></span></a><a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5"><i class="fa fa-sign-in"></i></a>
                                                 <div id="loginBox">  
