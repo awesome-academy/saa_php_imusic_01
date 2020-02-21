@@ -52,4 +52,10 @@ class Song extends Model
     {
         return $this->belongsTo(Lyric::class);
     }
+
+    public function getImageAttribute($value)
+    {
+        $value = url('images/') . $value;
+        return $value;
+    }
 }
