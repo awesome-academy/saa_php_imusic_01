@@ -13,4 +13,10 @@ class Artist extends Model
     {
         return $this->morphToMany(Song::class, 'listable');
     }
+
+    public function getAvatarAttribute($value)
+    {
+        $value = url('images/') . $value;
+        return $value;
+    }
 }

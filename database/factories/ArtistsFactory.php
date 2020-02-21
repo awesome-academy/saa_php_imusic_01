@@ -1,0 +1,15 @@
+<?php
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\Models\Artist;
+use Faker\Generator as Faker;
+
+$factory->define(Artist::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'dob' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'infomation' => $faker->paragraph,
+        'avatar' => 'v55.jpg'
+    ];
+});

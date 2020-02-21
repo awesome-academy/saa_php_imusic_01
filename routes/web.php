@@ -12,5 +12,6 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $a = App\Models\Album::find(1);
+    echo $a->image;
 });

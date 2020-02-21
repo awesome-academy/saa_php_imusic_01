@@ -15,4 +15,10 @@ class Admin extends Model
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function getAvatarAttribute($value)
+    {
+        $value = url('images/') . $value;
+        return $value;
+    }
 }
