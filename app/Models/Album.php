@@ -13,4 +13,10 @@ class Album extends Model
     {
         return $this->morphToMany(Song::class, 'listable');
     }
+
+    public function getImageAttribute($value)
+    {
+        $value = 'public\images\\' . $value;
+        return $value;
+    }
 }
