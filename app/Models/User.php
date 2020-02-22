@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -64,5 +64,13 @@ class User extends Authenticatable
     public function favouriteLists()
     {
         return $this->hasMany(FavouriteList::class);
+    }
+
+    public function getAvatarAttibute($value)
+    {
+        if(!strpos($value, 'http')){
+            $value = url('images/') . $value;
+        }
+        return $value;
     }
 }
