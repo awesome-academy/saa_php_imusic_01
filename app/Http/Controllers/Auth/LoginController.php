@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -26,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -36,5 +37,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(){
+        $remember_me = isset(request()->remember_me) ? true : false;
+        $credential = request()->only(['email', 'password']);
+        if(Auth::guard('web')->attempt($credential, $remember_me)){
+            return redirect($this->redirectTo);
+        }
+        return redirect()->back()->with('status', 'Username or Password is invalid!');
+    }
+
+    public function showLoginForm()
+    {
+        return view('web.auth.login');
     }
 }

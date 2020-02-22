@@ -8,6 +8,7 @@ use App\Models\User;
 class SocialUser extends Model
 {
     protected $table = 'social_users';
+    protected $fillable = ['user_id', 'socialable_type', 'socialable_id'];
 
     public function user()
     {

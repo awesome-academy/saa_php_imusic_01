@@ -24,6 +24,9 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
                 </div>
+                @foreach ($errors->all() as $error)
+                        <p class="alert alert-danger">{{ $error }}</p>
+                    @endforeach
                 <div class="modal-body modal-spa">
                     <div class="sign-grids">
                         <div class="sign">
@@ -31,18 +34,19 @@
                                 <ul>
                                     <li><a class="fb" href="{{route('social_login', ['social' => 'facebook'])}}"><i></i>Sign in with Facebook</a></li>
                                     <li><a class="goog" href="{{route('social_login', ['social' => 'google'])}}"><i></i>Sign in with Google</a></li>
-                                    <li><a class="linkin" href="{{route('register')}}">Register</a></li>
+                                    <li><a class="linkin" href="{{route('login')}}">Login with your account</a></li>
                                 </ul>
                             </div>
                             <div class="sign-right">
                                 <form method="post">
                                     {{ csrf_field() }}
-                                    <h3>Login with your account</h3>
-                                    <input type="text" value="Email id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email id';}" required="" name="email">	
-                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="" name="password">
-                                    <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me">
-                                    <label class="form-check-label" for="remember_me">Remember Me</label>
-                                    <input type="submit" value="Login" >
+                                    <h3>Create your account </h3>
+                                    <input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="" name='username'>
+                                    <input type="text" value="Mobile number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}" required="" name='phone'>
+                                    <input type="text" value="Email id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email id';}" required="" name='email'>	
+                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="" name='password'>	
+                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'RePassword';}" required="" name='password_confirmation'>	
+                                    <input type="submit" value="CREATE ACCOUNT" >
                                 </form>
                             </div>
                             <div class="clearfix"></div>								
