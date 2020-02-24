@@ -19,7 +19,7 @@ class AlbumController extends Controller
     public function songs(Album $album)
     {
         $songs = $album->songs()->with('artists:id,name')->get();
-        $comments = $album->comments;
+        $comments = $album->comments()->with('user:id,name,avatar')->get();
         return view('web.album.list_song', [
             'songs' => $songs,
             'album' => $album,

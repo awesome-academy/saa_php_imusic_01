@@ -49,71 +49,40 @@
 </div>
 
 <div class="response" style="width: 52%;">
-    <h4>{{ trans('comment_title') }}</h4>
-    <div class="media response-info">
-        <div class="media-left response-text-left">
-            <a href="#">
-                <img class="media-object" src="web/images/c1.jpg" alt="">
-            </a>
-            <h5><a href="#">Username</a></h5>
+    <h4>{{ trans('messages.comment_title') }}</h4>
+    @if(count($comments) == 0)
+    <p>{{ trans_choice('messages.comment', 0) }} </p>
+    @endif
+    <div class="media response-info" id="comment_list_box">
+        @foreach($comments as $comment)
+        <div class="comment_div">
+            <div class="media-left response-text-left">
+                <a href="#">
+                    <img class="media-object" src="{{$comment->user->avatar}}" alt="">
+                </a>
+                <h5><a href="#">{{$comment->user->name}}</a></h5>
+            </div>
+            <div class="media-body response-text-right">
+                <p>{{$comment->content}}</p>
+                <ul>
+                    <li>{{date("d-m-Y", strtotime($comment->created_at))}}</li>
+                </ul>
+                <a class="delete-comment" href="javascript:void(0)" data-url="{{route('comment.delete', ['comment_id' => $comment->id])}}" style="float: right;" onclick="deleteComment(this)">{{ trans('messages.delete_title') }}</a>
+            </div>
         </div>
-        <div class="media-body response-text-right">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <ul>
-                <li>Sep 21, 2015</li>
-                <li><a href="single.html">Reply</a></li>
-            </ul>
-        </div>
+        @endforeach
         <div class="clearfix"> </div>
     </div>
 </div>
 <div class="clearfix"></div>
 @include('web._partial.comment', [
-    'username' => Auth::user()->name
+'user' => Auth::user(),
+'commentable_type' => \Config::get('constants.album.commentable_type'),
+'commentable_id' => $album->id
 ])
-
-<script>
-    var currentSong = 0;
-    $(document).ready(function(){
-        audioPlayer();
-    });
-    
-    function audioPlayer(){
-        $("#audioPlayer")[0].src = $("a.song-item")[0];
-        $("#audioPlayer")[0].play();
-        $("#audioPlayer")[0].addEventListener("ended", function(){
-            currentSong++;
-            if(currentSong == $("a.song-item").length){
-                currentSong = 0;
-            }
-            $("a.song-item")[currentSong].click();
-            
-        });
-        $("a.song-item").click(function(e){
-            e.preventDefault();
-            $("#audioPlayer")[0].src = this;
-            $("#audioPlayer")[0].play();
-            $("a.song-item").removeClass("jp-playlist-current1");
-            $(this).addClass("jp-playlist-current1");
-        });
-    }
-    
-    function nextSong(){
-        currentSong++;
-        if(currentSong == $("a.song-item").length){
-            currentSong = 0;
-        }
-        $("a.song-item")[currentSong].click();
-    }
-
-    function previousSong(){
-        currentSong--;
-        if(currentSong < 0){
-            currentSong = 0;
-        }
-        $("a.song-item")[currentSong].click();
-    }
-</script>
+@endsection
+@section('before-scripts')
+<script src="{{url('web/js/play-audio.js')}}"></script>
 @endsection
 @section('after-styles')
 <style>
