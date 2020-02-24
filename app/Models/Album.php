@@ -14,6 +14,11 @@ class Album extends Model
         return $this->morphToMany(Song::class, 'listable');
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     public function getImageAttribute($value)
     {
         $value = url('web/images/') . "/$value";

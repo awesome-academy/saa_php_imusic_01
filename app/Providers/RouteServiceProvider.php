@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Album;
+use App\Models\Artist;
+use App\Models\Category;
+use App\Models\Song;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +37,22 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        Route::bind('category_id', function($value){
+            return Category::find($value) ?? abort(404);
+        });
+
+        Route::bind('song_id', function($value){
+            return Song::find($value) ?? abort(404);
+        });
+
+        Route::bind('artist_id', function($value){
+            return Artist::find($value) ?? abort(404);
+        });
+
+        Route::bind('album_id', function($value){
+            return Album::find($value) ?? abort(404);
+        });
     }
 
     /**
