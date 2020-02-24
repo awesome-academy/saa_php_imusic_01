@@ -55,7 +55,13 @@ class Song extends Model
 
     public function getImageAttribute($value)
     {
-        $value = url('images/') . $value;
+        $value = url('web/images') . "/$value";
+        return $value;
+    }
+
+    public function getLinkAttribute($value)
+    {
+        $value = url('web/media') . "/$value";
         return $value;
     }
 }

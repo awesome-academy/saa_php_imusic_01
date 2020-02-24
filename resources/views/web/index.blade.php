@@ -31,63 +31,20 @@
                 <a href="index.html"><h4 class="tittle">See all</h4></a>
                 <div class="clearfix"> </div>
             </div>
-            <div class="col-md-3 content-grid">
-                <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="web/images/v1.jpg" title="allbum-name"></a>
-                <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
+            <?php $i = 1; ?>
+            @foreach($new_release_songs as $song)
+            <div class="col-md-3 content-grid @if($i++%4 == 0) last-grid @endif">
+                <a class="play-icon" href="#small-dialog"><img src="{{$song->image}}" title="allbum-name"></a>
+                <a class="button play-icon" href="#small-dialog">{{$song->title}}</a>
             </div>
-            <div id="small-dialog" class="mfp-hide">
-                <iframe src="https://player.vimeo.com/video/12985622"></iframe>
-                
-            </div>
-            <div class="col-md-3 content-grid">
-                <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="web/images/v2.jpg" title="allbum-name"></a>
-                
-                <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-            </div>
-            <div class="col-md-3 content-grid">
-                <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="web/images/v3.jpg" title="allbum-name"></a>
-                
-                <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-            </div>
-            <div class="col-md-3 content-grid last-grid">
-                <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="web/images/v4.jpg" title="allbum-name"></a>
-                
-                <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-            </div>
-            <div class="col-md-3 content-grid">
-                <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="web/images/v5.jpg" title="allbum-name"></a>
-                
-                <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-            </div>
-            <div id="small-dialog" class="mfp-hide">
-                <iframe src="https://player.vimeo.com/video/12985622"></iframe>
-                
-            </div>
-            <div class="col-md-3 content-grid">
-                <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="web/images/v6.jpg" title="allbum-name"></a>
-                
-                <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-            </div>
-            <div class="col-md-3 content-grid">
-                <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="web/images/v7.jpg" title="allbum-name"></a>
-                
-                <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-            </div>
-            <div class="col-md-3 content-grid last-grid">
-                <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="web/images/v8.jpg" title="allbum-name"></a>
-                <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-            </div>
+            @endforeach
             <div class="clearfix"> </div>
         </div>
-        <!--//End-albums-->
-        <!--//discover-view-->
-        
-        @include("web.list")
-        <!--//discover-view-->
-        
-        <!-- /w3l-agile-its -->
+        @include("web._partial.list_artist", [
+            'artists' => $artists
+        ])
     </div>
-    @include('web._partial.music_right')
+    @include('web._partial.music_right', ['top_20_songs' => $top_20_songs])
     <!--//music-right-->
     <div class="clearfix"></div>
     <!-- /w3l-agile-its -->
