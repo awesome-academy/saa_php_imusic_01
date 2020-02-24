@@ -1,4 +1,6 @@
 @extends("web.master")
 @section('content')
-@include('web.list')
+@include('web._partial.list_artist', [
+    'artists' => $artists
+])
 @endsection
