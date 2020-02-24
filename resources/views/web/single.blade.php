@@ -1,20 +1,15 @@
 @extends('web.master')
 @section('content')
 <div class="inner-content single">
-    <!--/music-right-->
-    
     <div class="tittle-head">
-        <h3 class="tittle">Single <span class="new">Page</span></h3>
+        <h3 class="tittle">{{ trans('message.song_title') }}</h3>
         <div class="clearfix"> </div>
     </div>
     <div>
         <div class="col-md-6 player" style="background: #777;">
             <div class="audio-player">
                 <audio id="audio-player"  controls="controls">
-                    <source src="web/media/Blue Browne.ogg" type="audio/ogg"></source>
-                    <source src="web/media/Blue Browne.mp3" type="audio/mpeg"></source>
-                    <source src="web/media/Georgia.ogg" type="audio/ogg"></source>
-                    <source src="web/media/Georgia.mp3" type="audio/mpeg"></source>
+                    <source src="{{$song->link}}" type="audio/mpeg"></source>
                 </audio>
             </div>
             <!---->
@@ -30,19 +25,17 @@
                     });
                 });
             </script>
-            <!--audio-->
-            <!---->
-            
-            
-            <!--//-->
+
             <ul class="next-top">
                 <li><a class="ar" href="#"> <img src="{{url('web/images/arrow.png')}}" alt=""/></a></li>
                 <li><a class="ar2" href="#"><img src="{{url('web/images/arrow2.png')}}" alt=""/></i></a></li>
-                
             </ul>	
         </div>
         <div class="col-md-6">
-            @include('web._partial.rating')
+            @include('web._partial.rating', [
+                'rating' => $rating
+            ])
+            <span> <i class="lnr lnr-heart"></i> <i class="fa fa-headphones" aria-hidden="true">{{$song->count}}</i></span>
         </div>
     </div>
     
@@ -51,14 +44,18 @@
         <!-- /agileinfo -->
     </div> --}}
     <div class="response" style="width: 100%!important;">
-        <h4>Responses</h4>
+        <h4>{{ trans('messages.comment_title') }}</h4>
         
+        @if(count($comments) == 0)
+        <p>{{ trans_choice('messages.comment', 0) }} </p>
+        @else
         <div class="media response-info">
+            @foreach($comments as $comment)
             <div class="media-left response-text-left">
                 <a href="#">
                     <img class="media-object" src="web/images/c1.jpg" alt="">
                 </a>
-                <h5><a href="#">Username</a></h5>
+                <h5><a href="#">Giang</a></h5>
             </div>
             <div class="media-body response-text-right">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -69,21 +66,27 @@
                 
             </div>
             <div class="clearfix"> </div>
+            @endforeach
         </div>
+        @endif
+        
     </div>
     <!-- /agileits -->
     <div class="clearfix"> </div>
     <!--//music-right-->
     
-    <div class="coment-form">
-        <h4>Leave your comment</h4>
-        <form action="#" method="post">
-            <input type="text" value="Name " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-            <input type="email" value="Email (will not be published)*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email (will not be published)*';}" required="">
-            <input type="text" value="Website" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Website';}" required="">
-            <textarea onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Comment...';}" required="">Your Comment...</textarea>
-            <input type="submit" value="Submit Comment">
-        </form>
-    </div>
+    @include('web._partial.comment', [
+        'username' => auth('web')->user()->name
+    ])
 </div>
+@endsection
+@section('after-scripts')
+<script>
+    $(document).ready(function(){
+        audioPlayer();
+    });
+    function audioPlayer(){
+        $("#audio-player")[0].play();
+    }
+</script>
 @endsection

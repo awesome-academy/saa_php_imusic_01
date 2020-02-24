@@ -4,3 +4,9 @@
 .response{
     
 }
+.mejs-controls .mejs-play button, .mejs-controls .mejs-pause button {
+    left: 30px;
+}
+.next-top {
+    left: 20px;
+}
