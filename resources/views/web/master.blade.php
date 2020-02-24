@@ -32,7 +32,7 @@
 	<script type="text/javascript" src="{{url('web/js/mediaelement-and-player.min.js')}}"></script>
 	
 </head> 
-<body class="sticky-header left-side-collapsed"  onload="initMap()">
+<body class="sticky-header left-side-collapsed" >
 	<section>
 		@include('web._partial.leftside')
 		<div class="main-content">
@@ -40,9 +40,7 @@
 			<div id="page-wrapper">
 				@yield('content')
 			</div>
-			
 		</div>
-		
 		@include('web._partial.footer')
 	</section>
 	@yield('before-scripts')

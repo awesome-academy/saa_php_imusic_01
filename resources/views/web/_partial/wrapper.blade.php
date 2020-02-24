@@ -5,105 +5,47 @@
         <div class="clearfix"> </div>
     </div>
     <ul id="flexiselDemo1">
+        @foreach($hot_albums as $album)
         <li>
-            <a href="single.html"><img src="web/images/v1.jpg" alt=""/></a>
-            <div class="slide-title"><h4>Adele21 </div>
-                <div class="date-city">
-                    <h5>Jan-02-16</h5>
-                    <div class="buy-tickets">
-                        <a href="single.html">READ MORE</a>
-                    </div>
+            <a href="single.html"><img src="{{$album->image}}" alt=""/></a>
+            <div class="slide-title"><h4>{{$album->name}}</h4></div>
+            <div class="date-city">
+                <h5>{{date('d-m-y', strtotime($album->created_at))}}</h5>
+                <div class="buy-tickets">
+                    <a href="single.html">READ MORE</a>
                 </div>
-            </li>
-            <li>
-                <a href="single.html"><img src="web/images/v2.jpg" alt=""/></a>
-                <div class="slide-title"><h4>Adele21</h4></div>
-                <div class="date-city">
-                    <h5>Jan-02-16</h5>
-                    <div class="buy-tickets">
-                        <a href="single.html">READ MORE</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="single.html"><img src="web/images/v3.jpg" alt=""/></a>
-                <div class="slide-title"><h4>Shomlock</h4></div>
-                <div class="date-city">
-                    <h5>Jan-02-16</h5>
-                    <div class="buy-tickets">
-                        <a href="single.html">READ MORE</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="single.html"><img src="web/images/v4.jpg" alt=""/></a>
-                <div class="slide-title"><h4>Stuck on a feeling</h4></div>
-                <div class="date-city">
-                    <h5>Jan-02-16</h5>
-                    <div class="buy-tickets">
-                        <a href="single.html">READ MORE</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="single.html"><img src="web/images/v5.jpg" alt=""/></a>
-                <div class="slide-title"><h4>Ricky Martine </h4></div>
-                <div class="date-city">
-                    <h5>Jan-02-16</h5>
-                    <div class="buy-tickets">
-                        <a href="single.html">READ MORE</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="single.html"><img src="web/images/v6.jpg" alt=""/></a>
-                <div class="slide-title"><h4>Ellie Goluding </h4></div>
-                <div class="date-city">
-                    <h5>Jan-02-16</h5>
-                    <div class="buy-tickets">
-                        <a href="single.html">READ MORE</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="single.html"><img src="web/images/v6.jpeg" alt=""/></a>
-                <div class="slide-title"><h4>Fifty Shades </h4></div>
-                <div class="date-city">
-                    <h5>Jan-02-16</h5>
-                    <div class="buy-tickets">
-                        <a href="single.html">READ MORE</a>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <script type="text/javascript">
-            $(window).load(function() {
-                
-                $("#flexiselDemo1").flexisel({
-                    visibleItems: 5,
-                    animationSpeed: 1000,
-                    autoPlay: true,
-                    autoPlaySpeed: 3000,    		
-                    pauseOnHover: false,
-                    enableResponsiveBreakpoints: true,
-                    responsiveBreakpoints: { 
-                        portrait: { 
-                            changePoint:480,
-                            visibleItems: 2
-                        }, 
-                        landscape: { 
-                            changePoint:640,
-                            visibleItems: 3
-                        },
-                        tablet: { 
-                            changePoint:800,
-                            visibleItems: 4
-                        }
+            </div>
+        </li>
+        @endforeach
+    </ul>
+    <script type="text/javascript">
+        $(window).load(function() {
+            
+            $("#flexiselDemo1").flexisel({
+                visibleItems: 5,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,    		
+                pauseOnHover: false,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: { 
+                    portrait: { 
+                        changePoint:480,
+                        visibleItems: 2
+                    }, 
+                    landscape: { 
+                        changePoint:640,
+                        visibleItems: 3
+                    },
+                    tablet: { 
+                        changePoint:800,
+                        visibleItems: 4
                     }
-                });
+                }
             });
-        </script>
-        <script type="text/javascript" src="web/js/jquery.flexisel.js"></script>	
-    </div>
+        });
+    </script>
+    <script type="text/javascript" src="web/js/jquery.flexisel.js"></script>	
+</div>
 </div>
 <div class="clearfix"></div>

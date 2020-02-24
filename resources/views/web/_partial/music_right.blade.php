@@ -10,24 +10,16 @@
                     </div>
                     <div class="jp-playlist">
                         <ul style="display: block;">
-                            <li class="jp-playlist-current">
+                            <?php $i = 1 ?>
+                            @foreach($top_20_songs as $song)
+                            <?php $i++ ?>
+                            <li @if($i == 1)  class="jp-playlist-current" @endif>
                                 <div>
-                                    <a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a>
-                                    <a href="javascript:;" class="jp-playlist-item jp-playlist-current" tabindex="0">1. Ellie-Goulding <span class="jp-artist">by Pixar</span></a>
+                                    {{-- <a href="" class="jp-playlist-item-remove" style="display: none;">×</a> --}}
+                                    <a href="{{route('song.listen', ['song_id' => $song->id])}}" class="jp-playlist-item" tabindex="0">{{$song->title}} <span class="jp-artist">by @foreach($song->artists as $artist){{$artist->name}}@endforeach</span></a>
                                 </div>
                             </li>
-                            <li>
-                                <div>
-                                    <a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a>
-                                    <a href="javascript:;" class="jp-playlist-item" tabindex="0">2. Mark-Ronson-Uptown <span class="jp-artist">by Pixar</span></a>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a>
-                                    <a href="javascript:;" class="jp-playlist-item" tabindex="0">2. Mark-Ronson-Uptown <span class="jp-artist">by Pixar</span></a>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="jp-no-solution" style="display: none;">
