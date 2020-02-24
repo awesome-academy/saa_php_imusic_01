@@ -16,7 +16,7 @@ class Artist extends Model
 
     public function getAvatarAttribute($value)
     {
-        $value = url('images/') . $value;
+        $value = url('web/images/') . "/$value";
         return $value;
     }
 }

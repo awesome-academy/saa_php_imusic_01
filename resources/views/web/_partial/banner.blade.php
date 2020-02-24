@@ -6,31 +6,15 @@
                     <div class="banner-img">
                         <img src="web/images/11.jpg" class="img-responsive" alt="">
                     </div>
-                    <div class="banner-info">
-                        <a class="trend" href="single.html">TRENDING</a>
-                        <h3>Let Your Home</h3>
-                        <p>Album by <span>Rock star</span></p>
-                    </div>
-          
                 </li>
                 <li>
                       <div class="banner-img">
                           <img src="web/images/22.jpg" class="img-responsive" alt="">
                       </div>
-                      <div class="banner-info">
-                          <a class="trend" href="single.html">TRENDING</a>
-                          <h3>Charis Brown feet</h3>
-                          <p>Album by <span>Rock star</span></p>
-                      </div>
                 </li>
                 <li>
                       <div class="banner-img">
                           <img src="web/images/22.jpg" class="img-responsive" alt="">
-                      </div>
-                      <div class="banner-info">
-                          <a class="trend" href="single.html">TRENDING</a>
-                          <h3>Charis Brown feet</h3>
-                          <p>Album by <span>Rock star</span></p>
                       </div>
                 </li>
             </ul>

@@ -4,14 +4,15 @@
         <div class="profile_details" style="height: 64px;">		
             <div class="col-md-4 serch-part">
                 <div id="sb-search" class="sb-search">
-                    <form action="#" method="post">
-                        
+                    <form action="{{route('search')}}" method="get">
                         <input class="sb-search-input" placeholder="Search" type="search" name="search" id="search">
                         <input class="sb-search-submit" type="submit" value="">
                         <span class="sb-icon-search"> </span>
                     </form>
                 </div>
             </div>
+            <script src="{{url('web/js/classie.js')}}"></script>
+            <script src="{{url('web/js/uisearch.js')}}"></script>
             <script>
                 new UISearch( document.getElementById( 'sb-search' ) );
             </script>
@@ -22,13 +23,13 @@
                     {{-- <a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5"></a> --}}
                     <div id="loginBox" style="display: none;">
                         <ul class="list-group">
-                            <li class="list-group-item"><a href="javascipt:void(0);" data-toggle="modal" data-target="#modalChangePass">ChangePassword</a></li>
-                            <li class="list-group-item"><a href="{{route('logout')}}">Logout <i class="fa fa-sign-in"></i></a></li>
+                            <li class="list-group-item"><a href="javascipt:void(0);" data-toggle="modal" data-target="#modalChangePass">{{ trans('messages.change_password_title') }}</a></li>
+                            <li class="list-group-item"><a href="{{route('logout')}}">{{ trans('messages.logout_title') }}<i class="fa fa-sign-in"></i></a></li>
                         </ul>
                     </div>
                     
                     @else
-                    <a id="" class="" href="{{route('login')}}"><span>Login<i class="arrow glyphicon glyphicon-chevron-right"></i></span></a>
+                    <a id="" class="" href="{{route('login')}}"><span>{{ trans('messages.login_title') }}<i class="arrow glyphicon glyphicon-chevron-right"></i></span></a>
                     @endif
                 </div>
                 
