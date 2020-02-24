@@ -23,4 +23,9 @@ return [
     'login_title' => 'Đăng nhập',
     'register_title' => 'Đăng ký',
     'top_20_songs' => 'Top 20 bài hát',
+    'content_min' => 'Bình luận phải có độ dài',
+    'content_required' => 'Hãy nhập bình luận của bạn',
+    'add_comment_success' => 'Bình luận thành công',
+    'add_comment_fail' => 'Bình luận thất bại',
+    'delete_title' => 'Xóa'
 ];

@@ -1,8 +1,11 @@
+<?php 
+use Illuminate\Support\Facades\Config;
+?>
 @extends('web.master')
 @section('content')
 <div class="inner-content single">
     <div class="tittle-head">
-        <h3 class="tittle">{{ trans('message.song_title') }}</h3>
+        <h3 class="tittle">{{ trans('messages.song_title') }}</h3>
         <div class="clearfix"> </div>
     </div>
     <div>
@@ -25,7 +28,7 @@
                     });
                 });
             </script>
-
+            
             <ul class="next-top">
                 <li><a class="ar" href="#"> <img src="{{url('web/images/arrow.png')}}" alt=""/></a></li>
                 <li><a class="ar2" href="#"><img src="{{url('web/images/arrow2.png')}}" alt=""/></i></a></li>
@@ -33,37 +36,33 @@
         </div>
         <div class="col-md-6">
             @include('web._partial.rating', [
-                'rating' => $rating
+            'rating' => $rating
             ])
             <span> <i class="lnr lnr-heart"></i> <i class="fa fa-headphones" aria-hidden="true">{{$song->count}}</i></span>
         </div>
     </div>
-    
-    
-    {{-- <div class="single_left">
-        <!-- /agileinfo -->
-    </div> --}}
     <div class="response" style="width: 100%!important;">
         <h4>{{ trans('messages.comment_title') }}</h4>
         
         @if(count($comments) == 0)
         <p>{{ trans_choice('messages.comment', 0) }} </p>
         @else
-        <div class="media response-info">
+        <div class="media response-info" id="comment_list_box">
             @foreach($comments as $comment)
-            <div class="media-left response-text-left">
-                <a href="#">
-                    <img class="media-object" src="web/images/c1.jpg" alt="">
-                </a>
-                <h5><a href="#">Giang</a></h5>
-            </div>
-            <div class="media-body response-text-right">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <ul>
-                    <li>Sep 21, 2015</li>
-                    <li><a href="single.html">Reply</a></li>
-                </ul>
-                
+            <div class="comment_div">
+                <div class="media-left response-text-left">
+                    <a href="#">
+                        <img class="media-object" src="{{$comment->user->avatar}}" alt="">
+                    </a>
+                    <h5><a href="#">{{$comment->user->name}}</a></h5>
+                </div>
+                <div class="media-body response-text-right">
+                    <p>{{$comment->content}}</p>
+                    <ul>
+                        <li>{{$comment->created_at}}</li>
+                    </ul>
+                    <a class="delete-comment" href="javascript:void(0)" data-url="{{route('comment.delete', ['comment_id' => $comment->id])}}" style="float: right;" onclick="deleteComment(this)">{{ trans('messages.delete_title') }}</a>
+                </div>
             </div>
             <div class="clearfix"> </div>
             @endforeach
@@ -71,16 +70,17 @@
         @endif
         
     </div>
-    <!-- /agileits -->
     <div class="clearfix"> </div>
-    <!--//music-right-->
     
     @include('web._partial.comment', [
-        'username' => auth('web')->user()->name
+    'user' => auth('web')->user(),
+    'commentable_type' => \Config::get('constants.song.commentable_type'),
+    'commentable_id' => $song->id,
     ])
+    
 </div>
 @endsection
-@section('after-scripts')
+@section('before-scripts')
 <script>
     $(document).ready(function(){
         audioPlayer();

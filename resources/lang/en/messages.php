@@ -23,4 +23,9 @@ return [
     'login_title' => 'Login',
     'register_title' => 'Register',
     'top_20_songs' => 'Top 20 songs',
+    'content_min' => 'Your comment is too short',
+    'content_required' => 'Let write something',
+    'add_comment_success' => 'Add comment successfully',
+    'add_comment_fail' => 'Add comment fail',
+    'delete_title' => 'Delete'
 ];

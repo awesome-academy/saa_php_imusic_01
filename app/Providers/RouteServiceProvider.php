@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Album;
 use App\Models\Artist;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Song;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -38,20 +39,24 @@ class RouteServiceProvider extends ServiceProvider
 
         parent::boot();
 
-        Route::bind('category_id', function($value){
+        Route::bind('category_id', function ($value) {
             return Category::find($value) ?? abort(404);
         });
 
-        Route::bind('song_id', function($value){
+        Route::bind('song_id', function ($value) {
             return Song::find($value) ?? abort(404);
         });
 
-        Route::bind('artist_id', function($value){
+        Route::bind('artist_id', function ($value) {
             return Artist::find($value) ?? abort(404);
         });
 
-        Route::bind('album_id', function($value){
+        Route::bind('album_id', function ($value) {
             return Album::find($value) ?? abort(404);
+        });
+
+        Route::bind('comment_id', function ($value) {
+            return Comment::find($value) ?? abort(404);
         });
     }
 
@@ -79,8 +84,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
     }
 
     /**
@@ -93,8 +98,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
     }
 }
