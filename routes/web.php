@@ -45,6 +45,7 @@ Route::group(['namespace'=>'Web'], function(){
         Route::group(['as' => 'comment.'], function(){
             Route::post('/create', 'CommentController@create')->name('create');
             Route::post('/{comment_id}/delete', 'CommentController@delete')->name('delete');
+            Route::post('/{comment_id}/update', 'CommentController@update')->name('update');
         });
     });
 });

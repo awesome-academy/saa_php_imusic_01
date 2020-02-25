@@ -11,10 +11,10 @@ return [
     'album_title' => 'Album',
     'artist_title' => 'Ca sĩ',
     'comment_title' => 'Bình luận',
-    'menu_home' => 'Trang chủ', 
-    'menu_categories' => 'Danh mục', 
-    'menu_artists' => 'Ca sĩ', 
-    'menu_albums' => 'Albums', 
+    'menu_home' => 'Trang chủ',
+    'menu_categories' => 'Danh mục',
+    'menu_artists' => 'Ca sĩ',
+    'menu_albums' => 'Albums',
     'menu_my_favourites' => 'Danh sách yêu thích',
     'comment_with_name' => 'Bình luận với tư cách :name',
     'your_comment' => 'Bình luận của bạn',
@@ -27,5 +27,6 @@ return [
     'content_required' => 'Hãy nhập bình luận của bạn',
     'add_comment_success' => 'Bình luận thành công',
     'add_comment_fail' => 'Bình luận thất bại',
-    'delete_title' => 'Xóa'
+    'delete_title' => 'Xóa',
+    'edit_title' => 'Edit',
 ];

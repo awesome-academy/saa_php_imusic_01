@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\Config;
     <div class="response" style="width: 100%!important;">
         <h4>{{ trans('messages.comment_title') }}</h4>
         
+        <?php $user = auth('web')->user(); ?>
         @if(count($comments) == 0)
         <p>{{ trans_choice('messages.comment', 0) }} </p>
         @else
@@ -52,16 +53,19 @@ use Illuminate\Support\Facades\Config;
             <div class="comment_div">
                 <div class="media-left response-text-left">
                     <a href="#">
-                        <img class="media-object" src="{{$comment->user->avatar}}" alt="">
+                        <img class="media-object" src="{{$comment->user->avatar}}" alt="" style="width: 100px;">
                     </a>
                     <h5><a href="#">{{$comment->user->name}}</a></h5>
                 </div>
                 <div class="media-body response-text-right">
-                    <p>{{$comment->content}}</p>
+                    <p id="content_comment_id_{{$comment->id}}">{{$comment->content}}</p>
                     <ul>
                         <li>{{$comment->created_at}}</li>
                     </ul>
+                    @if($user->id == $comment->user->id)
                     <a class="delete-comment" href="javascript:void(0)" data-url="{{route('comment.delete', ['comment_id' => $comment->id])}}" style="float: right;" onclick="deleteComment(this)">{{ trans('messages.delete_title') }}</a>
+                    <a class="edit-comment" href="javascript:void(0)" data-url="{{route('comment.update', ['comment_id' => $comment->id])}}" style="float: right;" onclick="showUpdateCommentForm(this)" data-content = "{{$comment->content}}" data-content-id = "#content_comment_id_{{$comment->id}}">{{ trans('messages.edit_title') }} | </a>
+                    @endif
                 </div>
             </div>
             <div class="clearfix"> </div>
