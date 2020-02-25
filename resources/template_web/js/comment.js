@@ -18,7 +18,7 @@ function comments(){
                 update_link = result.data.update_link;
                 update_title = result.data.update_title;
                 content_comment_id = result.data.content_comment_id;
-
+                
                 array_data = {
                     comment_content: comment_content, 
                     comment_created_at: comment_created_at, 
@@ -32,11 +32,19 @@ function comments(){
                 };
                 comment = createComment(array_data);
                 insertComment(comment);
+                $("#comment_error_message").text('');
+                $("#comment_error_message").hide();
             }
             
         },
         error: function(data){
-            console.log(data);
+            var response = JSON.parse(data.responseText);
+            errorString = "";
+            $.each( response.errors, function( key, value) {
+                errorString = value;
+            });
+            $("#comment_error_message").text(errorString);
+            $("#comment_error_message").show();
         }
     });
 }
@@ -86,7 +94,7 @@ $("#submit_update_comment").click(function (e){
             $("#modalEditComment").toggle();
         },
         error: function(data){
-            console.log(data);
+            
         }
     });
 });

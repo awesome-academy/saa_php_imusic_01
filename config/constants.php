@@ -8,6 +8,7 @@ return [
     ],
     'song' => [
         'commentable_type' => 'App\Models\Song',
+        'rateable_type' => 'App\Models\Rate',
     ],
     'album' => [
         'commentable_type' => 'App\Models\Album',

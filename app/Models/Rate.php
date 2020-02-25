@@ -8,6 +8,7 @@ use App\Models\User;
 class Rate extends Model
 {
     protected $table = 'rates';
+    protected $fillable = ['point', 'user_id'];
 
     public function user()
     {

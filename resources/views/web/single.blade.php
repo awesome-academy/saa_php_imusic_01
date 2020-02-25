@@ -36,19 +36,24 @@ use Illuminate\Support\Facades\Config;
         </div>
         <div class="col-md-6">
             @include('web._partial.rating', [
-            'rating' => $rating
+            'rating' => $rating,
+            'route_create_rate' => route('rate.create'),
+            'rateable_type' => \Config::get('constants.song.rateable_type'),
+            'rateable_id' => $song->id,
+            'user_rate' => $user_rate
             ])
             <span> <i class="lnr lnr-heart"></i> <i class="fa fa-headphones" aria-hidden="true">{{$song->count}}</i></span>
         </div>
     </div>
     <div class="response" style="width: 100%!important;">
         <h4>{{ trans('messages.comment_title') }}</h4>
-        
+        <div class="media response-info" id="comment_list_box">
         <?php $user = auth('web')->user(); ?>
         @if(count($comments) == 0)
         <p>{{ trans_choice('messages.comment', 0) }} </p>
+        
         @else
-        <div class="media response-info" id="comment_list_box">
+       
             @foreach($comments as $comment)
             <div class="comment_div">
                 <div class="media-left response-text-left">
@@ -70,9 +75,9 @@ use Illuminate\Support\Facades\Config;
             </div>
             <div class="clearfix"> </div>
             @endforeach
-        </div>
-        @endif
         
+        @endif
+        </div>
     </div>
     <div class="clearfix"> </div>
     

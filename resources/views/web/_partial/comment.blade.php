@@ -8,6 +8,7 @@
         <input type="hidden" data-url="{{route('comment.create')}}" id="route_create_comment">
         <textarea onfocus="this.value = '';" required="" minlength="3" id="comment_content" name="comment_content">{{ trans('messages.your_comment') }}</textarea>
         <input type="submit" value="{{ trans('messages.comment_title') }}" id="submit_comment">
+        <p id="comment_error_message" style="color:red;"></p>
     </form>
 </div>
 <div class="modal fade in" id="modalEditComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabe2" aria-hidden="false">
@@ -21,7 +22,6 @@
                     {{ csrf_field() }}
                     <input type="hidden" data-url="" id="route_update_comment">
                     <textarea class="form-control" required="" minlength="3" id="comment_update_content" name="comment_update_content">{{ trans('messages.your_comment') }}</textarea>
-                    <p class="inform"></p>
                     <input class="btn" type="submit" value="{{ trans('messages.comment_title') }}" id="submit_update_comment">
                 </form>
             </div>
