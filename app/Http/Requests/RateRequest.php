@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CommentRequest extends FormRequest
+class RateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,9 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment_content' => 'required|min:3'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'comment_content.required' => trans('messages.content_required'),
-            'comment_content.min' => trans('messages.content_min'),
+            'point' => 'required',
+            'rateable_type' => 'required',
+            'rateable_id' => 'required',
         ];
     }
 }

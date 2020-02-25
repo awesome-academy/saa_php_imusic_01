@@ -9,8 +9,10 @@
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	
+	<link rel="stylesheet" href="{{url('web/css/rating.css')}}" type='text/css' />
 	<!-- Bootstrap Core CSS -->
 	<link href="{{url('web/css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="{{url('web/css/rating.css')}}" type='text/css' />
 	<!-- Custom CSS -->
 	<link href="{{url('web/css/style.css')}}" rel='stylesheet' type='text/css' />
 	<!-- Graph CSS -->
