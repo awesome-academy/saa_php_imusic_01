@@ -42,18 +42,18 @@ use Illuminate\Support\Facades\Config;
             'rateable_id' => $song->id,
             'user_rate' => $user_rate
             ])
-            <span> <i class="lnr lnr-heart"></i> <i class="fa fa-headphones" aria-hidden="true">{{$song->count}}</i></span>
+            <span><a href="javascript:void(0)" class="toggle_favourite" data-status = {{$favourite_status}} data-url-add="{{route('favourite_list.add')}}" data-song-id = "{{$song->id}}" data-url-delete="{{route('favourite_list.delete')}}" style="text-decoration: none; color:black;"><i class="fa fa-heart @if($favourite_status > 0) red @endif" id="icon_heart" ></i></a> <i class="fa fa-headphones" aria-hidden="true">{{$song->count}}</i></span>
         </div>
     </div>
     <div class="response" style="width: 100%!important;">
         <h4>{{ trans('messages.comment_title') }}</h4>
         <div class="media response-info" id="comment_list_box">
-        <?php $user = auth('web')->user(); ?>
-        @if(count($comments) == 0)
-        <p>{{ trans_choice('messages.comment', 0) }} </p>
-        
-        @else
-       
+            <?php $user = auth('web')->user(); ?>
+            @if(count($comments) == 0)
+            <p>{{ trans_choice('messages.comment', 0) }} </p>
+            
+            @else
+            
             @foreach($comments as $comment)
             <div class="comment_div">
                 <div class="media-left response-text-left">
@@ -75,8 +75,8 @@ use Illuminate\Support\Facades\Config;
             </div>
             <div class="clearfix"> </div>
             @endforeach
-        
-        @endif
+            
+            @endif
         </div>
     </div>
     <div class="clearfix"> </div>
@@ -98,4 +98,5 @@ use Illuminate\Support\Facades\Config;
         $("#audio-player")[0].play();
     }
 </script>
+<script src="{{url('web/js/favourite.js')}}"></script>
 @endsection

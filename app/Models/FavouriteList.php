@@ -10,12 +10,13 @@ use App\Models\Rate;
 class FavouriteList extends Model
 {
     protected $table = "favourite_lists";
-    
+    protected $fillable = ['name'];
+
     public function songs()
     {
         return $this->morphToMany(Song::class, 'listable');
     }
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);

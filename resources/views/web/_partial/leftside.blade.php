@@ -17,7 +17,7 @@
             </li>
             <li><a href="{{route('artist.index')}}"><i class="lnr lnr-users"></i> <span>{{ trans('messages.menu_artists') }}</span></a></li>
             <li><a href="{{route('album.index')}}"><i class="lnr lnr-music-note"></i> <span>{{ trans('messages.menu_albums') }}</span></a></li>
-            <li class="menu-list"><a href="#"><i class="lnr lnr-heart"></i>  <span>{{ trans('messages.menu_my_favourites') }}</span></a> 
+            <li ><a href="{{route('favourite_list.index')}}"><i class="lnr lnr-heart"></i>  <span>{{ trans('messages.menu_my_favourites') }}</span></a> 
             </li>
         </ul>
     </div>

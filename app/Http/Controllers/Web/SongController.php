@@ -22,14 +22,17 @@ class SongController extends Controller
     {
         $comments = $song->comments()->with('user:id,name,avatar')->get();
         $rating = $song->rates;
-        $user_rates = $rating->where('user_id', '=', auth('web')->user()->id);
+        $user = auth('web')->user();
+        $user_rates = $rating->where('user_id', '=', $user->id);
         $user_rate = count($user_rates) > 0 ? $user_rates->first() : null;
+        $favourite_status = $this->songRepo->isFavourite($user, $song);
         $this->songRepo->addView($song);
         return view('web.single', [
             'song' => $song,
             'rating' => $rating,
             'comments' => $comments,
             'user_rate' => $user_rate,
+            'favourite_status' => $favourite_status,
         ]);
     }
 }
