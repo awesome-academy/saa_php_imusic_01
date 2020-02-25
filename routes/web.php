@@ -47,7 +47,13 @@ Route::group(['namespace' => 'Web'], function () {
             // Route::get('/create', 'RateController@create')->name('create');
         });
 
-        Route::group(['as' => 'comment.'], function () {
+        Route::group(['prefix' => '/favourite', 'as' => 'favourite_list.'], function () {
+            Route::post('/add', 'FavouriteController@add')->name('add');
+            Route::post('/delete', 'FavouriteController@delete')->name('delete');
+            Route::get('/', 'FavouriteController@index')->name('index');
+        });
+
+        Route::group(['prefix' => '/comment', 'as' => 'comment.'], function () {
             Route::post('/create', 'CommentController@create')->name('create');
             Route::post('/{comment_id}/delete', 'CommentController@delete')->name('delete');
             Route::post('/{comment_id}/update', 'CommentController@update')->name('update');

@@ -29,4 +29,6 @@ return [
     'add_comment_fail' => 'Bình luận thất bại',
     'delete_title' => 'Xóa',
     'edit_title' => 'Edit',
+    'add_favourite_song_success' => 'Successfully',
+    'add_favourite_song_fail' => 'Fail'
 ];

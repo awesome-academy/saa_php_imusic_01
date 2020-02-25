@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Comment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,7 +10,6 @@ use App\Models\SocialUser;
 use App\Models\Rate;
 use App\Models\Lyric;
 use App\Models\FavouriteList;
-use App\Models\Comment;
 
 class User extends Authenticatable
 {
@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -62,8 +62,22 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function favouriteLists()
+    public function favouriteList()
     {
-        return $this->hasMany(FavouriteList::class);
+        return $this->hasOne(FavouriteList::class);
+    }
+
+    public function getAvatarAttibute($value)
+    {
+        if (!strpos($value, 'http')) {
+            $value = url('images/') . $value;
+        }
+        return $value;
+    }
+
+    // scope
+    public function scopeLoginWeb()
+    {
+        return auth('web')->user();
     }
 }

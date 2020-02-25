@@ -10,3 +10,18 @@
 .next-top {
     left: 20px;
 }
+.red {
+    color: red;
+    /* background-color: red; */
+}
+
+.list_item_heart {
+    float: right;
+    position: relative;
+    bottom: 35px;
+    font-size: 20px;
+    right: 10px;
+}
+.list_item_heart a:hover {
+    background-color: none;
+}

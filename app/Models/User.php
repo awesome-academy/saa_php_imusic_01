@@ -61,16 +61,21 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function favouriteLists()
+    public function favouriteList()
     {
-        return $this->hasMany(FavouriteList::class);
+        return $this->hasOne(FavouriteList::class);
     }
 
     public function getAvatarAttibute($value)
     {
-        if(!strpos($value, 'http')){
+        if (!strpos($value, 'http')) {
             $value = url('images/') . $value;
         }
         return $value;
+    }
+
+    public function scopeLoginWeb()
+    {
+        return auth('web')->user();
     }
 }
