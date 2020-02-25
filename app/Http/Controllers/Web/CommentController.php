@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Repositories\CommentRepository;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -36,7 +37,10 @@ class CommentController extends Controller
                     'user_avatar' => $user->avatar,
                     'user_name' => $user->name,
                     'delete_link' => route('comment.delete', ['comment_id' => $comment->id]),
-                    'delete_title' => trans('messages.delete_title')
+                    'delete_title' => trans('messages.delete_title'),
+                    'content_comment_id' => 'content_comment_id_' . $comment->id,
+                    'update_link' => route('comment.update', ['comment_id' => $comment->id]),
+                    'update_title' => trans('messages.edit_title'),
                 ]
             ]);
         }
@@ -60,6 +64,27 @@ class CommentController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => trans('add_comment_fail'),
+                'data' => ''
+            ]);
+        }
+    }
+
+    public function update(CommentRequest $request,Comment $comment)
+    {
+        $content = $request->comment_content;
+        $result = $this->commentRepo->updateComment($comment, $content);
+        if ($result == 0) {
+            return response()->json([
+                'success' => true,
+                'message' => trans('update_comment_success'),
+                'data' => [
+                    'comment_content' => $content
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => trans('update_comment_fail'),
                 'data' => ''
             ]);
         }

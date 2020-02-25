@@ -27,5 +27,6 @@ return [
     'content_required' => 'Let write something',
     'add_comment_success' => 'Add comment successfully',
     'add_comment_fail' => 'Add comment fail',
-    'delete_title' => 'Delete'
+    'delete_title' => 'Delete',
+    'edit_title' => 'Edit'
 ];

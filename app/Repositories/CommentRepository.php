@@ -1,9 +1,11 @@
-<?php 
+<?php
+
 namespace App\Repositories;
 
 use App\Models\Album;
 use App\Models\Comment;
 use App\Models\Song;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -15,9 +17,9 @@ class CommentRepository
     {
         $this->model = new Comment();
     }
-    
+
     public function storeComment($data)
-    {   
+    {
         $creator_id = $data['user_id'];
         $comment = new Comment([
             'content' => $data['content'],
@@ -38,20 +40,36 @@ class CommentRepository
             }
             return $comment;
         } catch (\Throwable $th) {
-            
         }
         return null;
     }
 
-    public function deleteComment(Comment $comment){
-        try {
-            $comment->delete();
-            return 0;
-        } catch (\Throwable $th) {
-            //throw $th;
+    public function updateComment(Comment $comment, $content)
+    {
+        $user = auth('web')->user();
+        if($user->can('update', $comment)){
+            try {
+                $comment->content = $content;
+                $comment->save();
+                return 0;
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
         }
         return 1;
     }
 
-
+    public function deleteComment(Comment $comment)
+    {
+        $user = auth('web')->user();
+        if ($user->can('delete', $comment)) {
+            try {
+                $comment->delete();
+                return 0;
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+        }
+        return 1;
+    }
 }
