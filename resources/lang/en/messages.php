@@ -47,4 +47,9 @@ return [
     'add_lyric_success' => 'Add lyric success',
     'delete_lyric_success' => 'Delete lyric success',
     'delete_lyric_fail' => 'Delete lyric fail',
+    'login_fail' => 'Email or password is invalid',
+    'remember_me' => 'Remember me',
+    'welcome_back' => 'Welcome Back!',
+    'confirm_logout' => 'Select "Logout" below if you are ready to end your current session.',
+    'logout_title' => 'Logout'
 ];

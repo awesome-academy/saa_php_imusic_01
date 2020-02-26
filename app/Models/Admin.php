@@ -2,11 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Role;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
+    use Notifiable;
+
+    // protected $guard = 'admin';
     //
     protected $table = 'admins';
 
@@ -18,7 +23,13 @@ class Admin extends Model
 
     public function getAvatarAttribute($value)
     {
-        $value = url('images/') . $value;
+        $value = url('web/images/') . "/$value";
         return $value;
+    }
+
+    public function loginAdmin()
+    {
+        $admin = auth('admin')->user();
+        return $admin;
     }
 }
