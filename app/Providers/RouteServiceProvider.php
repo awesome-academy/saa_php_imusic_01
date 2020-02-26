@@ -63,6 +63,10 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('lyric_id', function ($value) {
             return Lyric::find($value) ?? abort(404);
         });
+
+        Route::bind('category_id', function ($value) {
+            return Category::find($value) ?? abort(404);
+        });
     }
 
     /**
