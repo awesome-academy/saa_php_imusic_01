@@ -15,7 +15,7 @@
     <div class="modal-dialog" role="document" style="width:40%;">
         <div class="modal-content modal-info">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>						
+                <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>						
             </div>
             <div class="modal-body modal-spa">
                 <form action="#" method="post">
@@ -30,4 +30,9 @@
 </div>
 @section('after-scripts')
 <script src="{{url('web/js/comment.js')}}"></script>
+<script>
+    $(".close-modal").click(function (){
+        $('#modalEditComment').hide();
+    });
+</script>
 @endsection

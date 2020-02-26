@@ -6,6 +6,7 @@ use App\Models\Album;
 use App\Models\Artist;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Lyric;
 use App\Models\Song;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +58,10 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('comment_id', function ($value) {
             return Comment::find($value) ?? abort(404);
+        });
+
+        Route::bind('lyric_id', function ($value) {
+            return Lyric::find($value) ?? abort(404);
         });
     }
 
