@@ -37,4 +37,9 @@ return [
     'by' => 'bởi',
     'see_your_lyric' => 'Lyric của bạn',
     'delete_title' => 'Xóa',
+    'login_fail' => 'Email hoặc mật khẩu không hợp lệ',
+    'remember_me' => 'Remember me',
+    'welcome_back' => 'Welcome Back!',
+    'confirm_logout' => 'Xác nhận đăng xuất',
+    'logout_title' => 'Đăng xuất',
 ];

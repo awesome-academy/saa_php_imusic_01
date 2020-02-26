@@ -12,10 +12,9 @@
     <title>SB Admin 2 - Login</title>
     
     <!-- Custom fonts for this template-->
-    <link href="{{url('template_adminvendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     
     <!-- Custom styles for this template-->
-    <link href="{{url('template_admincss/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{url('template_admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
     
 </head>
 
@@ -36,21 +35,26 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">{{ trans('messages.welcome_back') }}</h1>
                                     </div>
-                                    <form class="user">
+                                    @if(session('status'))
+                                    <p class="txt-danger">{{session('status')}}</p>
+                                    @endif
+                                    <form class="user" method="POST" action="{{route('admin.auth.login')}}">
+                                        {{ csrf_field() }}
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name='password'>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                                <input type="checkbox" class="custom-control-input" id="customCheck" name="remember_me">
+                                                <label class="custom-control-label" for="customCheck">{{ trans('messages.remember_me') }}</label>
                                             </div>
                                         </div>
+                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                                     </form>
                                     <hr>
                                 </div>
@@ -60,20 +64,20 @@
                 </div>
                 
             </div>
-            
+
         </div>
-        
+
     </div>
     
     <!-- Bootstrap core JavaScript-->
-    <script src="{{url('template_adminvendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{url('template_adminvendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url('template_admin/js/jquery.min.js')}}"></script>
+    <script src="{{url('template_admin/js/bootstrap.bundle.min.js')}}"></script>
     
     <!-- Core plugin JavaScript-->
-    <script src="{{url('template_adminvendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{url('template_admin/js/jquery.easing.min.js')}}"></script>
     
     <!-- Custom scripts for all pages-->
-    <script src="{{url('template_adminjs/sb-admin-2.min.js')}}"></script>
+    <script src="{{url('template_admin/js/sb-admin-2.min.js')}}"></script>
     
 </body>
 
