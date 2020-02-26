@@ -50,7 +50,7 @@ class Song extends Model
 
     public function lyric()
     {
-        return $this->belongsTo(Lyric::class);
+        return $this->hasMany(Lyric::class)->where('status', '=', '1');
     }
 
     public function getImageAttribute($value)

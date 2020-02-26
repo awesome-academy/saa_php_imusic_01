@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Config;
 @section('content')
 <div class="inner-content single">
     <div class="tittle-head">
-        <h3 class="tittle">{{ trans('messages.song_title') }}</h3>
+        <h3 class="tittle">{{ trans('messages.song_title') }} : {{$song->title}}</h3>
         <div class="clearfix"> </div>
     </div>
     <div>
@@ -45,6 +45,10 @@ use Illuminate\Support\Facades\Config;
             <span><a href="javascript:void(0)" class="toggle_favourite" data-status = {{$favourite_status}} data-url-add="{{route('favourite_list.add')}}" data-song-id = "{{$song->id}}" data-url-delete="{{route('favourite_list.delete')}}" style="text-decoration: none; color:black;"><i class="fa fa-heart @if($favourite_status > 0) red @endif" id="icon_heart" ></i></a> <i class="fa fa-headphones" aria-hidden="true">{{$song->count}}</i></span>
         </div>
     </div>
+    @include('web._partial.lyrics', [
+        'lyric' => $lyric,
+        'song' => $song
+    ])
     <div class="response" style="width: 100%!important;">
         <h4>{{ trans('messages.comment_title') }}</h4>
         <div class="media response-info" id="comment_list_box">
