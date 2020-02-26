@@ -14,33 +14,33 @@
     
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="admin/index.html">
+        <a class="nav-link" href="{{route('admin.index')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="admin/charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span>
+        <a class="nav-link" href="{{route('admin.category.index')}}">
+            <i class="fas fa-bars"></i>
+            <span>{{ trans('messages.category_title') }}</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="admin/tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span>
+            <i class="fas fa-compact-disc"></i>
+            <span>{{ trans('messages.album_title') }}</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="admin/tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span>
+            <i class="fas fa-music"></i>
+            <span>{{ trans('messages.song_title') }}</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="admin/tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span>
+            <i class="fas fa-align-left"></i>
+            <span>{{ trans('messages.lyric_title') }}</span>
         </a>
     </li>
     

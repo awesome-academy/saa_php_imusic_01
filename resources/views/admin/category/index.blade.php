@@ -1,69 +1,35 @@
 @extends('admin.master')
 @section('content')
-<h1 class="h3 mb-2 text-gray-800">Tables</h1>
-<div>
-    <a class="btn btn-primary mb-2 mt-2" href="http://">Add</a>
-</div>
+<h1 class="h3 mb-2 text-gray-800">{{ trans('messages.category_title') }}</h1>
+@include('admin._partial.flash')
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-    </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                        <th>Action</th>
+                        <th>{{ trans('messages.title_title') }}</th>
+                        <th style="width: 30%;">{{ trans('messages.action_title') }}</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                        <th>Action</th>
+                        <th>{{ trans('messages.title_title') }}</th>
+                        <th>{{ trans('messages.action_title') }}</th>
                     </tr>
                 </tfoot>
                 <tbody>
+                    @foreach ($categories as $category)
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td>{{$category->name}}</td>
                         <td> 
-                            <a href="http://" class="btn btn-warning" title="Edit"> <i class="fas fa-pencil-alt"></i></a>
-                            {{-- <a href="http://">Delete</a> --}}
-                            <a href="#" class="btn btn-danger" title="Delete">
+                            <a href="{{route('admin.category.edit', ['category_id' => $category->id])}}" class="btn btn-warning" title="Edit"> <i class="fas fa-pencil-alt"></i></a>
+                            <a href="{{route('admin.category.delete', ['category_id' => $category->id])}}" class="btn btn-danger confirm-delete" title="Delete">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
-                        <td> 
-                            <a href="http://" class="btn btn-warning"> <i class="fas fa-pencil-alt"></i></a>
-                            {{-- <a href="http://">Delete</a> --}}
-                            <a href="#" class="btn btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -71,4 +37,23 @@
 </div>
 @endsection
 @section('after-scripts')
+<script>
+    $(".confirm-delete").click(function (e) {
+        e.preventDefault();
+        href = $(this).attr('href');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = href;
+            }
+        })
+    })
+</script>
 @endsection

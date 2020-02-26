@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="description" content="">
   <meta name="author" content="">
   
@@ -80,6 +81,8 @@
   <script src="{{url('template_admin/js/jquery.dataTables.min.js')}}"></script>
   <script src="{{url('template_admin/js/dataTables.bootstrap4.min.js')}}"></script>
   <script src="{{url('template_admin/js/demo/datatables-demo.js')}}"></script>
+  <script src="{{url('template_admin/js/sweetalert2@9.js')}}"></script>
+  <script src="{{url('template_admin/js/my-script.js')}}"></script>
   @yield('after-scripts')
 </body>
 
