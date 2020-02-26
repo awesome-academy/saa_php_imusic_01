@@ -16,7 +16,7 @@ class CreateLyricsTable extends Migration
         Schema::create('lyrics', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('content');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(0);
             $table->bigInteger('song_id');
             $table->bigInteger('user_id');
             $table->timestamps();

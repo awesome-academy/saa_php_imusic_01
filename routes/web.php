@@ -44,7 +44,12 @@ Route::group(['namespace' => 'Web'], function () {
 
         Route::group(['prefix' => '/rate', 'as' => 'rate.'], function () {
             Route::post('/create', 'RateController@create')->name('create');
-            // Route::get('/create', 'RateController@create')->name('create');
+        });
+
+        Route::group(['prefix' => '/lyric', 'as' => 'lyric.'], function () {
+            Route::post('/create', 'LyricController@create')->name('create');
+            Route::post('/{lyric_id}/update', 'LyricController@update')->name('update');
+            Route::post('/{lyric_id}/delete', 'LyricController@delete')->name('delete');
         });
 
         Route::group(['prefix' => '/favourite', 'as' => 'favourite_list.'], function () {

@@ -30,5 +30,11 @@ return [
     'delete_title' => 'Xóa',
     'edit_title' => 'Edit',
     'add_favourite_song_success' => 'Successfully',
-    'add_favourite_song_fail' => 'Fail'
+    'add_favourite_song_fail' => 'Fail',
+    'no_lyric' => 'Chưa có lời bài hát',
+    'add_lyric' => 'Thêm lời bài hát',
+    'cancel_title' => 'Hủy',
+    'by' => 'bởi',
+    'see_your_lyric' => 'Lyric của bạn',
+    'delete_title' => 'Xóa',
 ];
