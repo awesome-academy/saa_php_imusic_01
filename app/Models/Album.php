@@ -8,6 +8,7 @@ use App\Models\Song;
 class Album extends Model
 {
     protected $table = 'albums';
+    protected $fillable = ['name', 'is_hot'];
 
     public function songs()
     {

@@ -26,7 +26,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="admin/tables.html">
+        <a class="nav-link" href="{{route('admin.album.index')}}">
             <i class="fas fa-compact-disc"></i>
             <span>{{ trans('messages.album_title') }}</span>
         </a>
