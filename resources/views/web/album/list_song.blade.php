@@ -37,6 +37,11 @@
                         <li>
                             <div class="jp-playlist-item1">
                                 <a href="{{$song->link}}" class="song-item @if($i == 1)jp-playlist-current1 @endif" tabindex="0">{{$i++}}. {{$song->title}}  <span class="jp-artist">by @foreach($song->artists as $artist) {{$artist->name}}@endforeach</span></a>
+                                <span class="list_item_heart">
+                                    <a href="javascript:void(0)" class="toggle_favourite" data-status = "@if(in_array($song->id, $favourite_songs)){{1}}@else{{0}}@endif" data-url-add="{{route('favourite_list.add')}}" data-url-delete="{{route('favourite_list.delete')}}" style="text-decoration: none; color:black;" data-song-id = "{{$song->id}}">
+                                        <i class="fa fa-heart @if(in_array($song->id, $favourite_songs))red @endif"></i>
+                                    </a>
+                                </span>
                             </div>
                         </li>
                         @endforeach
@@ -86,6 +91,7 @@
 @endsection
 @section('before-scripts')
 <script src="{{url('web/js/play-audio.js')}}"></script>
+<script src="{{url('web/js/favourite.js')}}"></script>
 @endsection
 @section('after-styles')
 <style>
