@@ -15,7 +15,7 @@ $(".toggle_favourite").click(function(){
         success: function(result){
             if(result.success == true)
             {
-                $("#icon_heart").toggleClass('red');
+                $(e).children().toggleClass('red');
                 new_status = (parseInt(status) + 1) % 2;
                 e.attr('data-status', new_status);
             }

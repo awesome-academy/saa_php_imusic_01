@@ -40,7 +40,7 @@
                                     <a href="{{$song->link}}" class="song-item @if($i == 1)jp-playlist-current1 @endif" tabindex="0">{{$i++}}. {{$song->title}}  <span class="jp-artist">by @foreach($song->artists as $artist) {{$artist->name}}@endforeach</span></a>
                                     <span class="list_item_heart">
                                         <a href="javascript:void(0)" class="toggle_favourite" data-status = "1" data-url-add="{{route('favourite_list.add')}}" data-url-delete="{{route('favourite_list.delete')}}" style="text-decoration: none; color:black;" data-song-id = "{{$song->id}}">
-                                            <i class="fa fa-heart red" id="icon_heart" ></i>
+                                            <i class="fa fa-heart red"></i>
                                         </a>
                                     </span>
                                 </div>
