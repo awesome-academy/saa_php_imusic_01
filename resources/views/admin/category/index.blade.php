@@ -2,6 +2,7 @@
 @section('content')
 <h1 class="h3 mb-2 text-gray-800">{{ trans('messages.category_title') }}</h1>
 @include('admin._partial.flash')
+<a class="btn btn-primary mt-2 mb-2" href="{{route('admin.category.create')}}">{{ trans('messages.new_title') }}</a>
 <div class="card shadow mb-4">
     <div class="card-body">
         <div class="table-responsive">
