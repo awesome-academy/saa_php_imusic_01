@@ -76,4 +76,5 @@ return [
     'hot_album_title' => 'Hot Album',
     'image_title' => 'Image',
     'choose_file_title' => 'Choose file',
+    'readmore_title' => 'Listen'
 ];

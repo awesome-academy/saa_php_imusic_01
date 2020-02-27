@@ -66,4 +66,5 @@ return [
     'hot_album_title' => 'Hot Album',
     'image_title' => 'Ảnh',
     'choose_file_title' => 'Chọn file',
+    'readmore_title' => 'Phát'
 ];

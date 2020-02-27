@@ -20,7 +20,7 @@ class FavouriteController extends Controller
     {
         $user = User::loginWeb();
         $my_farourite = $user->favouriteList;
-        $songs = $my_farourite->songs;
+        $songs = isset($my_farourite) ? $my_farourite->songs : [];
         return view('web.favourite.show', [
             'songs' => $songs
         ]);
