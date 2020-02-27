@@ -7,12 +7,12 @@
     <ul id="flexiselDemo1">
         @foreach($hot_albums as $album)
         <li>
-            <a href="single.html"><img src="{{$album->image}}" alt=""/></a>
+            <a href="{{route('album.songs', ['album_id' => $album->id])}}"><img src="{{$album->image}}" alt=""/></a>
             <div class="slide-title"><h4>{{$album->name}}</h4></div>
             <div class="date-city">
                 <h5>{{date('d-m-y', strtotime($album->created_at))}}</h5>
                 <div class="buy-tickets">
-                    <a href="single.html">READ MORE</a>
+                    <a href="{{route('album.songs', ['album_id' => $album->id])}}">{{ trans('messages.readmore_title') }}</a>
                 </div>
             </div>
         </li>
