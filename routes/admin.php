@@ -47,5 +47,11 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('/create', 'ArtistController@store');
             Route::get('/{artist_id}/delete', 'ArtistController@destroy')->name('delete');
         });
+
+        Route::group(['namespace' => 'Lyric', 'as' => 'lyric.', 'prefix' => '/lyric'], function (){
+            Route::get('/', 'LyricController@index')->name('index');
+            Route::get('/{lyric_id}/edit', 'LyricController@edit')->name('edit');
+            Route::post('/{lyric_id}/update', 'LyricController@update')->name('update');
+        });
     });
 });

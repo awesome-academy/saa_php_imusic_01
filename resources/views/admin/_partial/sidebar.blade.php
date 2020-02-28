@@ -44,7 +44,7 @@
         </a>
     </li>
     <li class="nav-item @if($current_route == 'admin.lyric.index') active @endif">
-        <a class="nav-link" href="{{route('admin.artist.index')}}">
+        <a class="nav-link" href="{{route('admin.lyric.index')}}">
             <i class="fas fa-align-left"></i>
             <span>{{ trans('messages.lyric_title') }}</span>
         </a>

@@ -96,5 +96,7 @@ return [
     'name_title' => 'Name',
     'dob_title' => 'Birth day',
     'avatar_title' => 'Avatar',
-    'description_title' => 'Description'
+    'description_title' => 'Description',
+    'status_title' => 'Status',
+    'user_title' => 'User email'
 ];

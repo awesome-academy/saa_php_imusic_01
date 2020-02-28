@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+@include('admin._partial.flash')
 <h1 class="h3 mb-2 text-gray-800">{{ trans('messages.category_title') }}</h1>
 <div class="card shadow mb-4">
     <div class="card-body">
