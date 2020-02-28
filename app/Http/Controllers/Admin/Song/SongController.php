@@ -61,8 +61,8 @@ class SongController extends Controller
     public function store(SongRequest $request)
     {
         $request->validated([
-            'Song.link' => 'required|mimes:mp3|size:15000',
-            'Song.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|size:5000',
+            'Song.link' => 'required|mimes:mp3|max:15000',
+            'Song.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5000',
         ]);
         $result = $this->songRepo->store($request);
         if ($result) {
@@ -116,7 +116,7 @@ class SongController extends Controller
     {
         $request->validated([
             'Song.link' => 'nullable|mimes:mp3|size:15000',
-            'Song.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|size:5000',
+            'Song.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5000',
         ]);
         $result = $this->songRepo->update($request, $song);
         if ($result) {

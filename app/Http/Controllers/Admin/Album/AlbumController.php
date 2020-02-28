@@ -47,7 +47,7 @@ class AlbumController extends Controller
     public function store(AlbumRequest $request)
     {
         $request->validate([
-            'Album.image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'Album.image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5000',
         ]);
         $result = $this->albumRepo->store($request);
         if ($result) {

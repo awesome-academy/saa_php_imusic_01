@@ -25,24 +25,29 @@
             <span>{{ trans('messages.category_title') }}</span>
         </a>
     </li>
-    <li class="nav-item @if($current_route == 'admin.album.index') active @endif"">
+    <li class="nav-item @if($current_route == 'admin.album.index') active @endif">
         <a class="nav-link" href="{{route('admin.album.index')}}">
             <i class="fas fa-compact-disc"></i>
             <span>{{ trans('messages.album_title') }}</span>
         </a>
     </li>
-    <li class="nav-item @if($current_route == 'admin.song.index') active @endif"">
+    <li class="nav-item @if($current_route == 'admin.song.index') active @endif">
         <a class="nav-link" href="{{route('admin.song.index')}}">
             <i class="fas fa-music"></i>
             <span>{{ trans('messages.song_title') }}</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="admin/tables.html">
+    <li class="nav-item @if($current_route == 'admin.artist.index') active @endif">
+        <a class="nav-link" href="{{route('admin.artist.index')}}">
+            <i class="fas fa-users"></i>
+            <span>{{ trans('messages.artist_title') }}</span>
+        </a>
+    </li>
+    <li class="nav-item @if($current_route == 'admin.lyric.index') active @endif">
+        <a class="nav-link" href="{{route('admin.artist.index')}}">
             <i class="fas fa-align-left"></i>
             <span>{{ trans('messages.lyric_title') }}</span>
         </a>
     </li>
-    
 </ul>
 <!-- End of Sidebar -->

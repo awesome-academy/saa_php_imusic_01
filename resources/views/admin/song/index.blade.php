@@ -13,7 +13,7 @@
                         <th>{{ trans('messages.title_title') }}</th>
                         <th>{{ trans('messages.count_title') }}</th>
                         <th>{{ trans('messages.score_title') }}</th>
-                        <th>{{ trans('messages.is_hot_title') }}</th>
+                        <th>{{ trans('messages.new_title') }}</th>
                         <th>{{ trans('messages.category_title') }}</th>
                         <th>{{ trans('messages.artist_title') }}</th>
                         <th>{{ trans('messages.album_title') }}</th>
@@ -26,7 +26,7 @@
                         <th>{{ trans('messages.title_title') }}</th>
                         <th>{{ trans('messages.count_title') }}</th>
                         <th>{{ trans('messages.score_title') }}</th>
-                        <th>{{ trans('messages.is_hot_title') }}</th>
+                        <th>{{ trans('messages.new_title') }}</th>
                         <th>{{ trans('messages.category_title') }}</th>
                         <th>{{ trans('messages.artist_title') }}</th>
                         <th>{{ trans('messages.album_title') }}</th>
@@ -41,9 +41,9 @@
                         <td>{{$song->title}}</td>
                         <td>{{$song->count}}</td>
                         <td>{{$song->score}}</td>
-                        <td><input type="checkbox" @if($song->status) checked @endif disabled = "disabled"></td>
+                        <td><input type="checkbox" @if($song->is_new) checked @endif disabled = "disabled"></td>
                         <td>{{$song->category->name}}</td>
-                        <td>@foreach($song->artists as $artist)<a href="#">{{$artist->name}}</a> @endforeach</td>
+                        <td>@foreach($song->artists as $artist)<a href="{{route('admin.artist.edit', ['artist_id' => $artist->id])}}">{{$artist->name}}</a> @endforeach</td>
                         <td>@foreach($song->albums as $album)<a href="{{route('admin.album.edit', ['album_id' => $album->id])}}">{{$album->name}} </a>@endforeach</td>
                         <td>
                             <a href="{{route('admin.song.edit', ['song_id' => $song->id])}}" class="btn btn-warning" title="Edit"> <i class="fas fa-pencil-alt"></i></a>
