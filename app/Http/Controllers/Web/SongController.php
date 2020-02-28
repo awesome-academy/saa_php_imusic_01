@@ -24,6 +24,7 @@ class SongController extends Controller
 
     public function listen(Song $song)
     {
+        $artists =$song->artists;
         $comments = $song->comments()->with('user:id,name,avatar')->get();
         $rating = $song->rates;
         $user = User::loginWeb();
@@ -41,6 +42,7 @@ class SongController extends Controller
             'favourite_status' => $favourite_status,
             'lyric' => $song_lyric,
             'user_lyric' => $user_lyric,
+            'artists' => $artists,
         ]);
     }
 }
