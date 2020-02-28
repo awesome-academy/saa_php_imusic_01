@@ -31,11 +31,18 @@ class RateRepository
                 } else {
                     $result = $rateable->rates()->create($rate);
                 }
+                $this->updateScoreSong($rateable);
                 break;
             default:
                 # code...
                 break;
         }
         return $result;
+    }
+
+    public function updateScoreSong(Song $song)
+    {
+        $song->score = $song->rates()->avg('point');
+        $song->save();
     }
 }

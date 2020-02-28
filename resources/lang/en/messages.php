@@ -73,8 +73,17 @@ return [
     'add_album_success' => 'Add album success',
     'delete_album_success' => 'Delete album success',
     'delete_album_fail' => 'Delete album fail',
-    'hot_album_title' => 'Hot Album',
+    'update_song_success' => 'Update song success',
+    'update_song_fail' => 'Update song fail',
+    'add_song_fail' => 'Add song fail',
+    'add_song_success' => 'Add song success',
+    'delete_song_success' => 'Delete song success',
+    'delete_song_fail' => 'Delete song fail',
+    'hot_album_title' => 'Hot album',
     'image_title' => 'Image',
     'choose_file_title' => 'Choose file',
-    'readmore_title' => 'Listen'
+    'readmore_title' => 'Listen',
+    'id_title' => 'ID',
+    'is_hot_title' => 'Hot',
+    'score_title' => 'Rating'
 ];
