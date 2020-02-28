@@ -21,5 +21,9 @@ return [
     'storage' => [
         'song' => 'web/media',
         'image' => 'web/images',
+    ],
+    'status' => [
+        'Pending' => 0,
+        'Publish' => 1,
     ]
 ];

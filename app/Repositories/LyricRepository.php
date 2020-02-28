@@ -6,6 +6,7 @@ use App\Http\Requests\LyricRequest;
 use App\Models\Lyric;
 use App\Models\Song;
 use App\User;
+use Illuminate\Support\Facades\Config;
 
 class LyricRepository
 {
@@ -54,5 +55,25 @@ class LyricRepository
     {
         $user_lyric = $user->lyrics()->where('song_id', '=', $song->id)->first();
         return $user_lyric;
+    }
+
+    public function getAll()
+    {
+        $lyrics = Lyric::orderBy('created_at', 'DESC')->get();
+        return $lyrics;
+    }
+
+    public function updateStatus(LyricRequest $request, Lyric $lyric)
+    {
+        $status = array_values(Config::get('constants.status'));
+        if (isset($request->status) && in_array($request->status, $status)) {
+            $lyric->status = $request->status;
+            // try {
+                $lyric->save();
+                return true;
+            // } catch (\Throwable $th) {
+            // }
+        }
+        return false;
     }
 }

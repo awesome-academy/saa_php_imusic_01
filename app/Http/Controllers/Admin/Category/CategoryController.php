@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Repositories\CategoryRepository;
+use Illuminate\Support\Facades\Input;
 
 class CategoryController extends Controller
 {
@@ -50,7 +51,7 @@ class CategoryController extends Controller
         if ($result) {
             return redirect()->route('admin.category.index')->with('success', trans('messages.add_category_success'));
         }
-        return redirect()->route('admin.category.index')->with('error', trans('messages.add_category_fail'));
+        return redirect()->back()->withInput(Input::all())->with('error', trans('messages.add_category_fail'));
     }
 
     /**
@@ -88,9 +89,9 @@ class CategoryController extends Controller
     {
         $result = $this->categoryRepo->update($request, $category);
         if ($result) {
-            return redirect()->route('admin.category.index')->with('success', trans('messages.update_category_success'));
+            return redirect()->back()->with('success', trans('messages.update_category_success'));
         }
-        return redirect()->route('admin.category.index')->with('error', trans('messages.update_category_fail'));
+        return redirect()->back()->withInput(Input::all())->with('error', trans('messages.update_category_fail'));
     }
 
     /**
@@ -103,8 +104,8 @@ class CategoryController extends Controller
     {
         $result = $this->categoryRepo->delete($category);
         if ($result) {
-            return redirect()->route('admin.category.index')->with('success', trans('messages.delete_category_success'));
+            return redirect()->back()->with('success', trans('messages.delete_category_success'));
         }
-        return redirect()->route('admin.category.index')->with('error', trans('messages.delete_category_fail'));
+        return redirect()->back()->with('error', trans('messages.delete_category_fail'));
     }
 }

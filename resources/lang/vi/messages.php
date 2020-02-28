@@ -87,4 +87,6 @@ return [
     'dob_title' => 'Ngày sinh',
     'avatar_title' => 'Avatar',
     'description_title' => 'Mô tả',
+    'status_title' => 'Trạng thái',
+    'user_title' => 'Người dùng',
 ];
