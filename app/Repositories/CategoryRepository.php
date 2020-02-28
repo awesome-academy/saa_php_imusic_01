@@ -32,6 +32,10 @@ class CategoryRepository
 
     public function delete(Category $category)
     {
+        $count_song = $category->songs()->count();
+        if ($count_song > 0) {
+            return false;
+        }
         try {
             $category->delete();
             return true;

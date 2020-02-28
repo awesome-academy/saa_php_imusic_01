@@ -11,28 +11,28 @@
     
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-    
+    <?php $current_route = Route::getCurrentRoute()->getName(); ?>
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item @if($current_route == 'admin.index') active @endif">
         <a class="nav-link" href="{{route('admin.index')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item @if($current_route == 'admin.category.index') active @endif">
         <a class="nav-link" href="{{route('admin.category.index')}}">
             <i class="fas fa-bars"></i>
             <span>{{ trans('messages.category_title') }}</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item @if($current_route == 'admin.album.index') active @endif"">
         <a class="nav-link" href="{{route('admin.album.index')}}">
             <i class="fas fa-compact-disc"></i>
             <span>{{ trans('messages.album_title') }}</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="admin/tables.html">
+    <li class="nav-item @if($current_route == 'admin.song.index') active @endif"">
+        <a class="nav-link" href="{{route('admin.song.index')}}">
             <i class="fas fa-music"></i>
             <span>{{ trans('messages.song_title') }}</span>
         </a>

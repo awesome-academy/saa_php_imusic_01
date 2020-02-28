@@ -33,7 +33,7 @@ class AlbumRepository
             'is_hot' => isset($request->Album['is_hot']) ? true : false,
         ]);
         $file = $request->Album['image'];
-        $name = $this->fileRepo->uploadFile($file);
+        $name = $this->fileRepo->uploadFile($file, Config::get('constants.storage.image'));
         if ($name != null) {
             $album->image = $name;
             try {
@@ -51,7 +51,7 @@ class AlbumRepository
         $album->is_hot = isset($request->Album['is_hot']) ? true : false;
         if (isset($request->Album['image'])) {
             $file = $request->Album['image'];
-            $name = $this->fileRepo->uploadFile($file);
+            $name = $this->fileRepo->uploadFile($file, Config::get('constants.storage.image'));
             if ($name != null) {
                 $album->image = $name;
             } else {

@@ -9,8 +9,14 @@ return [
     'song' => [
         'commentable_type' => 'App\Models\Song',
         'rateable_type' => 'App\Models\Rate',
+        'default_image' => 'song.png'
     ],
     'album' => [
         'commentable_type' => 'App\Models\Album',
+        'default_image' => 'album.png'
     ],
+    'storage' => [
+        'song' => 'web/media',
+        'image' => 'web/images',
+    ]
 ];

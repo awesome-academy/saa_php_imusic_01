@@ -21,6 +21,7 @@
   <link href="{{url('template_admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
   <link href="{{url('template_admin/js/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="{{url('template_admin/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{url('template_admin/css/style.css')}}">
   @yield('after-styles')
 </head>
 
