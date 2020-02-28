@@ -80,10 +80,21 @@ return [
     'delete_song_success' => 'Delete song success',
     'delete_song_fail' => 'Delete song fail',
     'hot_album_title' => 'Hot album',
+    'update_artist_success' => 'Update artist success',
+    'update_artist_fail' => 'Update artist fail',
+    'add_artist_fail' => 'Add artist fail',
+    'add_artist_success' => 'Add artist success',
+    'delete_artist_success' => 'Delete artist success',
+    'delete_artist_fail' => 'Delete artist fail',
+    'hot_album_title' => 'Hot album',
     'image_title' => 'Image',
     'choose_file_title' => 'Choose file',
     'readmore_title' => 'Listen',
     'id_title' => 'ID',
     'is_hot_title' => 'Hot',
-    'score_title' => 'Rating'
+    'score_title' => 'Rating',
+    'name_title' => 'Name',
+    'dob_title' => 'Birth day',
+    'avatar_title' => 'Avatar',
+    'description_title' => 'Description'
 ];
