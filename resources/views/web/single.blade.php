@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Config;
 @section('content')
 <div class="inner-content single">
     <div class="tittle-head">
-        <h3 class="tittle">{{ trans('messages.song_title') }} : {{$song->title}}</h3>
+        <h3 class="tittle">{{ trans('messages.song_title') }} : {{$song->title}} by @foreach($artists as $artist) <a href="{{route('artist.songs', ['artist_id' => $artist->id])}}">{{$artist->name}}</a> @endforeach</h3>
         <div class="clearfix"> </div>
     </div>
     <div>
@@ -46,8 +46,8 @@ use Illuminate\Support\Facades\Config;
         </div>
     </div>
     @include('web._partial.lyrics', [
-        'lyric' => $lyric,
-        'song' => $song
+    'lyric' => $lyric,
+    'song' => $song
     ])
     <div class="response" style="width: 100%!important;">
         <h4>{{ trans('messages.comment_title') }}</h4>
@@ -100,6 +100,11 @@ use Illuminate\Support\Facades\Config;
     });
     function audioPlayer(){
         $("#audio-player")[0].play();
+        
+        $("#audio-player")[0].addEventListener("ended", function(){
+            $("#audio-player")[0].play();
+            
+        });
     }
 </script>
 <script src="{{url('web/js/favourite.js')}}"></script>

@@ -29,7 +29,7 @@
             <?php $i = 1; ?>
             @foreach($new_release_songs as $song)
             <div class="col-md-3 content-grid @if($i++%4 == 0) last-grid @endif">
-                <a class="play-icon" href="{{route('song.listen', ['song_id' => $song->id])}}"><img src="{{$song->image}}" title="allbum-name"></a>
+                <a class="play-icon" href="{{route('song.listen', ['song_id' => $song->id])}}"><img src="{{$song->image}}" title="allbum-name" style="height: 165px;"></a>
                 <a class="button play-icon" href="{{route('song.listen', ['song_id' => $song->id])}}">{{$song->title}}</a>
             </div>
             @endforeach
