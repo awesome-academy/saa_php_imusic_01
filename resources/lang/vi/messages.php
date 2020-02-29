@@ -89,4 +89,5 @@ return [
     'description_title' => 'Mô tả',
     'status_title' => 'Trạng thái',
     'user_title' => 'Người dùng',
+    'hello_title' => 'Xin chào'
 ];

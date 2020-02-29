@@ -98,5 +98,6 @@ return [
     'avatar_title' => 'Avatar',
     'description_title' => 'Description',
     'status_title' => 'Status',
-    'user_title' => 'User email'
+    'user_title' => 'User email',
+    'hello_title' => 'Hello,'
 ];

@@ -3,12 +3,17 @@
 namespace App\Repositories;
 
 use App\Http\Requests\SongRequest;
+use App\Jobs\SendInformNewSongEmail;
+use App\Mail\SendMail;
+use App\Mail\SongInform;
 use App\Models\Comment;
 use App\Models\Song;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class SongRepository
 {
@@ -71,6 +76,7 @@ class SongRepository
                 $song->save();
                 $song->albums()->attach($albums);
                 $song->artists()->attach($artists);
+                $this->createQueue($song);
             });
             return true;
         } catch (\Throwable $th) {
@@ -125,5 +131,16 @@ class SongRepository
             //throw $th;
         }
         return false;
+    }
+
+    public function createQueue(Song $song)
+    {
+        $users = User::all();
+        $second = 0;
+        foreach ($users as $user) {
+            $second += 15;
+            $emailJob = (new SendInformNewSongEmail($user, $song))->delay(Carbon::now()->addSeconds($second));
+            dispatch($emailJob);
+        }
     }
 }
