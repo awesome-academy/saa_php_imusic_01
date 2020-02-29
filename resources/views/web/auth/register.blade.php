@@ -41,12 +41,12 @@
                                 <form method="post">
                                     {{ csrf_field() }}
                                     <h3>Create your account </h3>
-                                    <input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="" name='username'>
-                                    <input type="text" value="Mobile number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}" required="" name='phone'>
-                                    <input type="text" value="Email id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email id';}" required="" name='email'>	
-                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="" name='password'>	
-                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'RePassword';}" required="" name='password_confirmation'>	
-                                    <input type="submit" value="CREATE ACCOUNT" >
+                                    <input type="text" placeholder="Name" required="" name='username' value="{{old('username')}}">
+                                    <input type="text" placeholder="Mobile number" required="" name='phone' value="{{old('phone')}}">
+                                    <input type="text" placeholder="Email" required="" name='email' value="{{old('email')}}">	
+                                    <input type="password" placeholder="Password" required="" name='password'>	
+                                    <input type="password" placeholder="Password" required="" name='password_confirmation'>	
+                                    <input type="submit" placeholder="CREATE ACCOUNT" >
                                 </form>
                             </div>
                             <div class="clearfix"></div>								
