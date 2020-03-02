@@ -62,7 +62,13 @@ use Illuminate\Support\Facades\Config;
             <div class="comment_div">
                 <div class="media-left response-text-left">
                     <a href="#">
-                        <img class="media-object" src="{{$comment->user->avatar}}" alt="" style="width: 100px;">
+                        <?php 
+                            $avatar = $comment->user->avatar;
+                            if (!strpos($avatar, 'http') {
+                                $avatar = url('web/images/') . $avatar;
+                            }
+                        ?>
+                        <img class="media-object" src="{{$avatar}}" alt="" style="width: 100px;">
                     </a>
                     <h5><a href="#">{{$comment->user->name}}</a></h5>
                 </div>
