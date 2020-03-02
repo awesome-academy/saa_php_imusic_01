@@ -44,7 +44,7 @@
                 <select class="form-control select2" id="select_categories" name="Song[category_id]">
                     <?php $old_category = old('Song.category_id') ?? $song->category_id ?>
                     @foreach ($categories as $category)
-                    <option value="{{$category->id}}" @if ($category->id == old('Song.category_id'))) selected @endif>{{$category->name}}</option>
+                    <option value="{{$category->id}}" @if ($category->id == $old_category)) selected @endif>{{$category->name}}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('Song.category_id'))

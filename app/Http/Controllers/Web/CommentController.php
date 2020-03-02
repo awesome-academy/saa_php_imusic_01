@@ -28,13 +28,17 @@ class CommentController extends Controller
         $comment = $this->commentRepo->storeComment($data);
         if ($comment != null) {
             $user = $comment->user;
+            $avatar = $user->avatar;
+            if (!strpos($avatar, 'http')) {
+                $avatar = url('web/images/') . "/$avatar" ;
+            }
             return response()->json([
                 'success' => true,
                 'message' => trans('add_comment_success'),
                 'data' => [
                     'comment_content' => $comment->content,
                     'comment_created_at' => date('d-m-Y', strtotime($comment->created_at)),
-                    'user_avatar' => $user->avatar,
+                    'user_avatar' => $avatar,
                     'user_name' => $user->name,
                     'delete_link' => route('comment.delete', ['comment_id' => $comment->id]),
                     'delete_title' => trans('messages.delete_title'),

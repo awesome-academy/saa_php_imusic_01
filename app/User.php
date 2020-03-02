@@ -70,7 +70,7 @@ class User extends Authenticatable
     public function getAvatarAttibute($value)
     {
         if (!strpos($value, 'http')) {
-            $value = url('images/') . $value;
+            $value = url('web/images/') . "/$value";
         }
         return $value;
     }
